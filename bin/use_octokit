@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+$LOAD_PATH << File.expand_path(File.dirname(__FILE__) + '/../lib')
+
+require 'octokit'
+require 'use_octokit/version'
+require 'use_octokit'
+
+puts 'Please enter access token'
+access_token = gets
+
+rm = UseOctokit::RepositoryMananger.new(access_token)
+
+puts '--'
+
+if rm.repositories.empty?
+  puts "Couldn't find any repositories"
+else
+  puts 'Found the following repositories'
+  puts '--------------------------------'
+  rm.repositories.each do |repo|
+    puts repo.name
+  end
+end
