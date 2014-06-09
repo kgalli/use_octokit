@@ -4,14 +4,33 @@ $LOAD_PATH << File.expand_path(File.dirname(__FILE__) + '/../lib')
 require 'octokit'
 require 'use_octokit/version'
 require 'use_octokit'
+require 'optparse'
 
-print 'Please enter access token: '
-access_token = gets
+options = {}
+option_parser = OptionParser.new do |opts|
+  # acces token to access the API
+  opts.on("-t ACCES-TOKEN") do |access_token|
+    options[:access_token] = access_token
+  end
+end
 
-rm = UseOctokit::RepositoryMananger.new(access_token)
+begin
+  option_parser.parse!
+rescue OptionParser::InvalidArgument => ex
+  STDERR.puts ex.message
+  STDERR.puts option_parser
+end
 
+# ask for acces token if not given as
+# an argument
+unless options.include?(:access_token)
+  print 'Please enter access token: '
+  options[:acces_token] = gets
+end
+
+# use RepositoryManager to list repositories
+rm = UseOctokit::RepositoryMananger.new(options[:access_token])
 puts ''
-
 if rm.repositories.empty?
   puts "Couldn't find any repositories"
 else
