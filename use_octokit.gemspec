@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = UseOctokit::VERSION
   spec.authors       = ["kgalli"]
   spec.email         = ["mail@kgalli.de"]
-  spec.summary       = %q{Commandline tool to show github repositories.}
-  spec.description   = %q{ }
+  spec.summary       = %q{Playground for octokit library.}
+  spec.description   = %q{Command line tool to play with certain functionality provided by the octokit.rb lib.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
