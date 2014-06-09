@@ -6,11 +6,9 @@ This gem is just used as a playground to get familiar with the octokit.rb librar
 
 Clone the repository, change into use\_octokit folder and execute the `use_octokit` command.
 
-  git@github.com:kgalli/use_octokit.git
-  
-  cd use_octokit
-  
-  use_octokit -t <access-token>
+    git@github.com:kgalli/use_octokit.git
+    cd use_octokit
+    use_octokit -t <access-token>
 
 ## Contributing
 
