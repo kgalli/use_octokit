@@ -25,7 +25,7 @@ end
 # an argument
 unless options.include?(:access_token)
   print 'Please enter access token: '
-  options[:acces_token] = gets
+  options[:access_token] = gets
 end
 
 # use RepositoryManager to list repositories
