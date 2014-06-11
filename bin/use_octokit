@@ -25,12 +25,13 @@ end
 # an argument
 unless options.include?(:access_token)
   print 'Please enter access token: '
-  options[:acces_token] = gets
+  options[:access_token] = STDIN.gets
 end
 
 # use RepositoryManager to list repositories
 rm = UseOctokit::RepositoryMananger.new(options[:access_token])
 puts ''
+
 if rm.repositories.empty?
   puts "Couldn't find any repositories"
 else
@@ -38,5 +39,10 @@ else
   puts '--------------------------------'
   rm.repositories.each do |repo|
     puts repo.name
+    tags = rm.tags(repo.full_name)
+    unless tags.empty?
+      puts 'Tags:'
+      tags.each { |tag| puts " - #{tag.name}" }
+    end
   end
 end
